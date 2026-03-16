@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Messages — Admin{% endblock %}
+
+{% block content %}
+
+<div style="max-width:1200px; margin:0 auto; padding:40px 48px;">
+
+  <div style="margin-bottom:36px;">
+    <div class="section-label" style="margin-bottom:8px;">Admin Panel</div>
+    <h1 style="font-size:32px; font-weight:600;">
+      Contact <span class="grad-text">Messages</span>
+    </h1>
+  </div>
+
+  {% if messages %}
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      {% for msg in messages %}
+        <div style="background:var(--bg-card); border:1px solid {% if not msg.is_read %}#7c3aed44{% else %}var(--border-color){% endif %}; border-radius:14px; padding:24px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+            <div>
+              <div style="font-size:15px; font-weight:500; color:var(--text-primary);">{{ msg.name }}</div>
+              <div style="font-size:13px; color:#38bdf8; margin-top:2px;">{{ msg.email }}</div>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px;">
+              {% if not msg.is_read %}
+                <span style="background:#7c3aed22; color:#a78bfa; border:1px solid #7c3aed44; font-size:11px; padding:3px 10px; border-radius:10px;">
+                  New
+                </span>
+              {% endif %}
+              <span style="font-size:12px; color:var(--text-faint);">
+                {{ msg.created_at.strftime('%d %b %Y, %H:%M') }}
+              </span>
+            </div>
+          </div>
+          <div style="font-size:14px; color:var(--text-muted); line-height:1.7; background:var(--bg-secondary); padding:14px 16px; border-radius:10px;">
+            {{ msg.content }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  {% else %}
+    <div style="text-align:center; padding:80px 20px; color:var(--text-muted);">
+      <div style="font-size:48px; margin-bottom:16px;">📭</div>
+      <div style="font-size:16px; color:var(--text-primary); margin-bottom:8px;">No messages yet</div>
+      <div style="font-size:13px;">Messages from your contact form will appear here</div>
+    </div>
+  {% endif %}
+
+</div>
+
+{% endblock %}

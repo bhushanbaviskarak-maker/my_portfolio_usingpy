@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Projects — My Portfolio{% endblock %}
+
+{% block content %}
+
+<section class="section">
+  <div class="section-label" style="margin-bottom:12px;">My Work</div>
+  <div class="section-title">All <span class="grad-text">Projects</span></div>
+  
+<!-- API loaded projects — filled by JavaScript -->
+<div id="api-projects-container" class="projects-grid" style="margin-bottom:40px;">
+  <div style="color:var(--text-muted); font-size:14px; padding:20px;">
+    Loading projects...
+  </div>
+</div>
+
+  {% if projects %}
+    <div class="projects-grid">
+      {% for project in projects %}
+        <div class="project-card fade-up">
+          <div class="project-type">
+            {{ loop.index }}. Project
+          </div>
+          <div class="project-title">{{ project.title }}</div>
+          <div class="project-desc">{{ project.description }}</div>
+          <div class="tech-tags" style="margin-bottom:16px;">
+            {% for tech in project.tech_stack.split(',') %}
+              <span class="tech-tag">{{ tech.strip() }}</span>
+            {% endfor %}
+          </div>
+          <div style="font-size:12px; color:var(--text-faint); margin-bottom:16px;">
+            {{ project.created_at.strftime('%d %b %Y') }}
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            {% if project.github_url %}
+              <a href="{{ project.github_url }}" target="_blank"
+                 class="outline-btn" style="padding:8px 18px; font-size:12px;">
+                GitHub
+              </a>
+            {% endif %}
+            {% if project.live_url %}
+              <a href="{{ project.live_url }}" target="_blank"
+                 class="grad-btn" style="padding:8px 18px; font-size:12px;">
+                Live Demo
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  {% else %}
+    <div style="text-align:center; padding:80px 20px;">
+      <div style="font-size:48px; margin-bottom:20px;">🚀</div>
+      <div style="font-size:20px; font-weight:500; color:var(--text-primary); margin-bottom:8px;">
+        Projects coming soon!
+      </div>
+      <div style="font-size:14px; color:var(--text-muted); margin-bottom:28px;">
+        Check back later or contact me to know more
+      </div>
+      <a href="{{ url_for('contact') }}" class="grad-btn">Get In Touch</a>
+    </div>
+  {% endif %}
+
+</section>
+
+{% endblock %}

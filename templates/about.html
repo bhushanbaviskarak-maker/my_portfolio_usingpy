@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% block title %}About — My Portfolio{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section style="padding:80px 48px 40px; max-width:1200px; margin:0 auto;">
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;">
+
+    <!-- Left: Text -->
+    <div class="fade-up">
+      <div class="section-label" style="margin-bottom:12px;">About Me</div>
+      <h1 style="font-size:42px; font-weight:600; line-height:1.2; margin-bottom:20px;">
+        I'm a <span class="grad-text">Software Developer</span>
+        who loves building things
+      </h1>
+      <p style="color:var(--text-muted); font-size:15px; line-height:1.8; margin-bottom:16px;">
+        I am a passionate full stack developer with a strong focus on
+        Python and Flask. I love turning ideas into real working
+        web applications that solve real problems.
+      </p>
+      <p style="color:var(--text-muted); font-size:15px; line-height:1.8; margin-bottom:28px;">
+        Currently looking for exciting opportunities where I can
+        contribute, grow, and continue learning every day.
+      </p>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="{{ url_for('contact') }}" class="grad-btn">Hire Me</a>
+        <a href="{{ url_for('projects') }}" class="outline-btn">View Projects</a>
+      </div>
+    </div>
+
+    <!-- Right: Profile Card -->
+    <div class="fade-up" style="display:flex; justify-content:center;">
+      <div class="grad-card" style="max-width:320px; width:100%;">
+        <div class="grad-card-inner" style="text-align:center; padding:36px 24px;">
+
+          <!-- Avatar circle -->
+          <div style="width:100px; height:100px; border-radius:50%;
+                      background:linear-gradient(135deg,#7c3aed,#0ea5e9,#10b981);
+                      margin:0 auto 20px; display:flex; align-items:center;
+                      justify-content:center; font-size:36px; font-weight:600; color:#fff;">
+            Y
+          </div>
+
+          <div style="font-size:20px; font-weight:600; color:var(--text-primary); margin-bottom:4px;">
+            Bhushan Anil Baviskar
+          </div>
+          <div style="font-size:13px; margin-bottom:20px;" class="grad-text">
+            Software Developer
+          </div>
+
+          <!-- Info rows -->
+          <div style="text-align:left; border-top:1px solid var(--border-color); padding-top:20px;">
+            <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border-color); font-size:13px;">
+              <span style="color:var(--text-muted);">Pune</span>
+              <span style="color:var(--text-primary);">India</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border-color); font-size:13px;">
+              <span style="color:var(--text-muted);">Experience</span>
+              <span style="color:var(--text-primary);">6 months Internship
+              </span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border-color); font-size:13px;">
+              <span style="color:var(--text-muted);">Available</span>
+              <span style="color:#34d399;">Yes — Open to work</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px 0; font-size:13px;">
+              <span style="color:var(--text-muted);">Email</span>
+              <span style="color:#38bdf8;">bhushanbaviskarak@gmail.com</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Skills Section -->
+<section class="section">
+  <div class="section-label" style="margin-bottom:12px;">What I Know</div>
+  <div class="section-title">My <span class="grad-text">Tech Stack</span></div>
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:20px;">
+
+    <!-- Backend -->
+    <div class="project-card fade-up">
+      <div style="font-size:24px; margin-bottom:12px;">⚙️</div>
+      <div class="project-title">Backend</div>
+      <div class="tech-tags" style="margin-top:12px;">
+        <span class="tech-tag" style="color:#a78bfa; border-color:#7c3aed44;">Python</span>
+        <span class="tech-tag" style="color:#a78bfa; border-color:#7c3aed44;">Flask</span>
+        <span class="tech-tag" style="color:#a78bfa; border-color:#7c3aed44;">SQLAlchemy</span>
+        <span class="tech-tag" style="color:#a78bfa; border-color:#7c3aed44;">REST API</span>
+      </div>
+    </div>
+
+    <!-- Frontend -->
+    <div class="project-card fade-up">
+      <div style="font-size:24px; margin-bottom:12px;">🎨</div>
+      <div class="project-title">Frontend</div>
+      <div class="tech-tags" style="margin-top:12px;">
+        <span class="tech-tag" style="color:#38bdf8; border-color:#0ea5e944;">HTML5</span>
+        <span class="tech-tag" style="color:#38bdf8; border-color:#0ea5e944;">CSS3</span>
+        <span class="tech-tag" style="color:#38bdf8; border-color:#0ea5e944;">JavaScript</span>
+        <span class="tech-tag" style="color:#38bdf8; border-color:#0ea5e944;">Jinja2</span>
+      </div>
+    </div>
+
+    <!-- Database -->
+    <div class="project-card fade-up">
+      <div style="font-size:24px; margin-bottom:12px;">🗄️</div>
+      <div class="project-title">Database</div>
+      <div class="tech-tags" style="margin-top:12px;">
+        <span class="tech-tag" style="color:#34d399; border-color:#10b98144;">SQLite</span>
+        <span class="tech-tag" style="color:#34d399; border-color:#10b98144;">SQL</span>
+        <span class="tech-tag" style="color:#34d399; border-color:#10b98144;">ORM</span>
+      </div>
+    </div>
+
+    <!-- Tools -->
+    <div class="project-card fade-up">
+      <div style="font-size:24px; margin-bottom:12px;">🛠️</div>
+      <div class="project-title">Tools</div>
+      <div class="tech-tags" style="margin-top:12px;">
+        <span class="tech-tag" style="color:#fbbf24; border-color:#f59e0b44;">Git</span>
+        <span class="tech-tag" style="color:#fbbf24; border-color:#f59e0b44;">GitHub</span>
+        <span class="tech-tag" style="color:#fbbf24; border-color:#f59e0b44;">VS Code</span>
+        <span class="tech-tag" style="color:#fbbf24; border-color:#f59e0b44;">Postman</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Education Section -->
+<section style="background:var(--bg-secondary); border-top:1px solid var(--border-color); border-bottom:1px solid var(--border-color); padding:80px 48px;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div class="section-label" style="margin-bottom:12px;">My Journey</div>
+    <div class="section-title">Education & <span class="grad-text">Experience</span></div>
+
+    <div style="display:flex; flex-direction:column; gap:20px; max-width:700px;">
+
+      <!-- Education item -->
+      <div class="fade-up" style="display:flex; gap:20px; align-items:flex-start;">
+        <div style="width:3px; background:linear-gradient(180deg,#7c3aed,#0ea5e9); border-radius:2px; flex-shrink:0; min-height:80px;"></div>
+        <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:14px; padding:24px; flex:1;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+            <div style="font-size:16px; font-weight:500; color:var(--text-primary);">
+             BBA(CA)
+            </div>
+            <span style="font-size:12px; background:#7c3aed22; color:#a78bfa; border:1px solid #7c3aed44; padding:3px 10px; border-radius:10px;">
+             2025
+            </span>
+          </div>
+          <div style="font-size:14px; color:#38bdf8; margin-bottom:8px;">Commarce Management And Computer Science ,Nashik</div>
+          <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">
+            Studied core computer science subjects including data structures,
+            algorithms, databases and web development.
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Experience item -->
+      <div class="fade-up" style="display:flex; gap:20px; align-items:flex-start;">
+        <div style="width:3px; background:linear-gradient(180deg,#0ea5e9,#10b981); border-radius:2px; flex-shrink:0; min-height:80px;"></div>
+        <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:14px; padding:24px; flex:1;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+            <div style="font-size:16px; font-weight:500; color:var(--text-primary);">
+              Python Full Stack Developer
+            </div>
+            <span style="font-size:12px; background:#10b98122; color:#34d399; border:1px solid #10b98144; padding:3px 10px; border-radius:10px;">
+              2024 — Present
+            </span>
+          </div>
+          <div style="font-size:14px; color:#34d399; margin-bottom:8px;">Self-taught / Projects</div>
+          <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">
+            Built multiple full stack web applications using Python, Flask,
+            SQLite and REST APIs. Developed this portfolio with admin panel and user authentication.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

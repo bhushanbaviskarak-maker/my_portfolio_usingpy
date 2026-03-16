@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+
+<div style="max-width:1200px; margin:0 auto; padding:40px 48px;">
+
+  <!-- Header -->
+  <div style="margin-bottom:40px;">
+    <div class="section-label" style="margin-bottom:8px;">Control Panel</div>
+    <h1 style="font-size:36px; font-weight:600; color:var(--text-primary);">
+      Admin <span class="grad-text">Dashboard</span>
+    </h1>
+    <p style="color:var(--text-muted); margin-top:8px; font-size:14px;">
+      Welcome back, <span style="color:#a78bfa;">{{ current_user.username }}</span>!
+      Here's your portfolio overview.
+    </p>
+  </div>
+
+  <!-- Stats Cards -->
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-bottom:48px;">
+
+    <!-- Projects -->
+    <div class="grad-card">
+      <div class="grad-card-inner" style="text-align:center;">
+        <div style="font-size:42px; font-weight:600;" class="grad-text">
+          {{ stats.projects }}
+        </div>
+        <div style="font-size:14px; color:var(--text-muted); margin-top:4px;">
+          Total Projects
+        </div>
+        <a href="{{ url_for('admin_projects') }}" class="grad-btn"
+           style="margin-top:16px; display:inline-block; padding:8px 20px; font-size:12px;">
+          Manage
+        </a>
+      </div>
+    </div>
+
+    <!-- Blog Posts -->
+    <div style="background:linear-gradient(135deg,#0ea5e9,#10b981); padding:1.5px; border-radius:14px;">
+      <div class="grad-card-inner" style="text-align:center;">
+        <div style="font-size:42px; font-weight:600; background:linear-gradient(135deg,#0ea5e9,#10b981); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">
+          {{ stats.posts }}
+        </div>
+        <div style="font-size:14px; color:var(--text-muted); margin-top:4px;">
+          Blog Posts
+        </div>
+        <a href="{{ url_for('home') }}" class="outline-btn"
+           style="margin-top:16px; display:inline-block; padding:8px 20px; font-size:12px;">
+          View Blog
+        </a>
+      </div>
+    </div>
+
+    <!-- Messages -->
+    <div style="background:linear-gradient(135deg,#10b981,#a78bfa); padding:1.5px; border-radius:14px;">
+      <div class="grad-card-inner" style="text-align:center;">
+        <div style="font-size:42px; font-weight:600; background:linear-gradient(135deg,#10b981,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">
+          {{ stats.messages }}
+        </div>
+        <div style="font-size:14px; color:var(--text-muted); margin-top:4px;">
+          Messages
+          {% if stats.unread > 0 %}
+            <span style="background:#ef444422; color:#f87171; border:1px solid #ef444444;
+                         font-size:11px; padding:2px 8px; border-radius:10px; margin-left:6px;">
+              {{ stats.unread }} unread
+            </span>
+          {% endif %}
+        </div>
+        <a href="{{ url_for('admin_messages') }}" class="outline-btn"
+           style="margin-top:16px; display:inline-block; padding:8px 20px; font-size:12px;">
+          View All
+        </a>
+      </div>
+    </div>
+
+    <!-- Users -->
+    <div style="background:linear-gradient(135deg,#f59e0b,#ef4444); padding:1.5px; border-radius:14px;">
+      <div class="grad-card-inner" style="text-align:center;">
+        <div style="font-size:42px; font-weight:600; background:linear-gradient(135deg,#f59e0b,#ef4444); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">
+          {{ stats.users }}
+        </div>
+        <div style="font-size:14px; color:var(--text-muted); margin-top:4px;">
+          Registered Users
+        </div>
+        <a href="{{ url_for('home') }}" class="outline-btn"
+           style="margin-top:16px; display:inline-block; padding:8px 20px; font-size:12px;">
+          View Site
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Quick Actions -->
+  <div style="margin-bottom:40px;">
+    <div class="section-label" style="margin-bottom:16px;">Quick Actions</div>
+    <div style="display:flex; flex-wrap:wrap; gap:12px;">
+      <a href="{{ url_for('admin_add_project') }}" class="grad-btn">
+        + Add New Project
+      </a>
+      <a href="{{ url_for('admin_projects') }}" class="outline-btn">
+        Manage Projects
+      </a>
+      <a href="{{ url_for('admin_messages') }}" class="outline-btn">
+        View Messages
+      </a>
+      <a href="{{ url_for('home') }}" class="outline-btn">
+        View Live Site
+      </a>
+    </div>
+  </div>
+
+  <!-- Admin Info -->
+  <div style="background:var(--bg-card); border:1px solid var(--border-color);
+              border-radius:14px; padding:24px;">
+    <div style="font-size:14px; font-weight:500; color:var(--text-primary); margin-bottom:16px;">
+      Your Admin Account
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:16px;">
+      <div>
+        <div style="font-size:12px; color:var(--text-muted); margin-bottom:4px;">Username</div>
+        <div style="font-size:14px; color:#a78bfa;">{{ current_user.username }}</div>
+      </div>
+      <div>
+        <div style="font-size:12px; color:var(--text-muted); margin-bottom:4px;">Email</div>
+        <div style="font-size:14px; color:#38bdf8;">{{ current_user.email }}</div>
+      </div>
+      <div>
+        <div style="font-size:12px; color:var(--text-muted); margin-bottom:4px;">Role</div>
+        <span style="background:#7c3aed22; color:#a78bfa; border:1px solid #7c3aed44;
+                     font-size:12px; padding:4px 12px; border-radius:10px;">
+          Administrator
+        </span>
+      </div>
+      <div>
+        <div style="font-size:12px; color:var(--text-muted); margin-bottom:4px;">Member since</div>
+        <div style="font-size:14px; color:var(--text-primary);">
+          {{ current_user.created_at.strftime('%d %b %Y') }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

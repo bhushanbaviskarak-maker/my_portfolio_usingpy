@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Add Project — Admin{% endblock %}
+
+{% block content %}
+
+<div style="max-width:680px; margin:0 auto; padding:40px 48px;">
+
+  <div style="margin-bottom:36px;">
+    <a href="{{ url_for('admin_projects') }}"
+       style="font-size:13px; color:var(--text-muted); display:inline-flex; align-items:center; gap:6px; margin-bottom:20px;">
+      ← Back to Projects
+    </a>
+    <div class="section-label" style="margin-bottom:8px;">Admin Panel</div>
+    <h1 style="font-size:32px; font-weight:600;">
+      Add <span class="grad-text">Project</span>
+    </h1>
+  </div>
+
+  <div class="grad-card">
+    <div class="grad-card-inner">
+      <form method="POST" action="{{ url_for('admin_add_project') }}">
+
+        <div class="form-group">
+          <label>Project Title</label>
+          <input type="text" name="title" placeholder="e.g. Portfolio Website" required/>
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <textarea name="description" placeholder="Describe what this project does..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Tech Stack <span style="color:var(--text-faint); font-size:12px;">(comma separated)</span></label>
+          <input type="text" name="tech_stack" placeholder="Python, Flask, SQLite, HTML, CSS"/>
+        </div>
+
+        <div class="form-group">
+          <label>GitHub URL <span style="color:var(--text-faint); font-size:12px;">(optional)</span></label>
+          <input type="url" name="github_url" placeholder="https://github.com/yourname/project"/>
+        </div>
+
+        <div class="form-group">
+          <label>Live URL <span style="color:var(--text-faint); font-size:12px;">(optional)</span></label>
+          <input type="url" name="live_url" placeholder="https://yourproject.com"/>
+        </div>
+
+        <div style="display:flex; gap:12px; margin-top:8px;">
+          <button type="submit" class="grad-btn">Save Project</button>
+          <a href="{{ url_for('admin_projects') }}" class="outline-btn">Cancel</a>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

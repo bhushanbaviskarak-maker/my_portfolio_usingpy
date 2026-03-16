@@ -1,0 +1,395 @@
+/* =============================================
+   VARIABLES — entire color system in one place
+   ============================================= */
+:root {
+  --bg-primary:   #080810;
+  --bg-secondary: #0d0d1a;
+  --bg-card:      #13131f;
+  --border-color: #1e1e3a;
+
+  --grad-purple-cyan:  linear-gradient(135deg, #7c3aed, #0ea5e9);
+  --grad-cyan-green:   linear-gradient(135deg, #0ea5e9, #10b981);
+  --grad-full:         linear-gradient(135deg, #7c3aed, #0ea5e9, #10b981);
+
+  --text-primary: #f1f5f9;
+  --text-muted:   #64748b;
+  --text-faint:   #334155;
+
+  --purple: #7c3aed;
+  --cyan:   #0ea5e9;
+  --green:  #10b981;
+}
+
+/* =============================================
+   RESET
+   ============================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.7;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* =============================================
+   GRADIENT TEXT
+   ============================================= */
+.grad-text {
+  background: var(--grad-full);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s ease infinite;
+}
+
+/* =============================================
+   GRADIENT BUTTON
+   ============================================= */
+.grad-btn {
+  background: var(--grad-full);
+  background-size: 200% 200%;
+  animation: shimmer 3s ease infinite;
+  color: #fff;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: transform 0.2s, opacity 0.2s;
+  display: inline-block;
+}
+.grad-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+  color: #fff;
+}
+
+/* =============================================
+   OUTLINE BUTTON
+   ============================================= */
+.outline-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 12px 28px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: border-color 0.2s, color 0.2s;
+  display: inline-block;
+}
+.outline-btn:hover {
+  border-color: var(--purple);
+  color: #a78bfa;
+}
+
+/* =============================================
+   GRADIENT BORDER CARD
+   ============================================= */
+.grad-card {
+  background: var(--grad-full);
+  background-size: 200% 200%;
+  animation: shimmer 4s ease infinite;
+  padding: 1.5px;
+  border-radius: 14px;
+  height: 100%;
+}
+.grad-card-inner {
+  background: var(--bg-card);
+  border-radius: 13px;
+  padding: 24px;
+  height: 100%;
+}
+
+/* =============================================
+   NAVBAR
+   ============================================= */
+.navbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 16px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.nav-logo {
+  font-size: 20px;
+  font-weight: 600;
+}
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  align-items: center;
+}
+.nav-links a {
+  color: var(--text-muted);
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: #a78bfa; }
+
+/* =============================================
+   HERO SECTION
+   ============================================= */
+.hero {
+  text-align: center;
+  padding: 100px 40px 80px;
+}
+.hero-subtitle {
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background: var(--grad-purple-cyan);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-size: 52px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.hero p {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 0 auto 36px;
+}
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+/* =============================================
+   SKILL PILLS
+   ============================================= */
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.pill {
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  border: 1px solid #7c3aed66;
+  color: #a78bfa;
+  background: linear-gradient(135deg, #7c3aed15, #0ea5e910);
+  transition: transform 0.2s;
+}
+.pill:hover { transform: translateY(-2px); }
+
+/* =============================================
+   SECTION
+   ============================================= */
+.section {
+  padding: 80px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-label {
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background: var(--grad-purple-cyan);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 48px;
+  color: var(--text-primary);
+}
+
+/* =============================================
+   PROJECT GRID
+   ============================================= */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 24px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.project-card:hover {
+  border-color: var(--purple);
+  transform: translateY(-4px);
+}
+.project-type {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 8px;
+}
+.project-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+.project-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tech-tag {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 10px;
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+}
+
+/* =============================================
+   FORM STYLES
+   ============================================= */
+.form-group { margin-bottom: 20px; }
+.form-group label {
+  display: block;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: 'Segoe UI', sans-serif;
+  transition: border-color 0.2s;
+  outline: none;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--purple);
+}
+.form-group textarea { resize: vertical; min-height: 120px; }
+
+/* =============================================
+   FLASH MESSAGES
+   ============================================= */
+.flash-success {
+  background: #10b98120;
+  border: 1px solid #10b98144;
+  color: #34d399;
+  padding: 12px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+.flash-danger {
+  background: #ef444420;
+  border: 1px solid #ef444444;
+  color: #f87171;
+  padding: 12px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  padding: 32px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text-faint);
+}
+.footer-links { display: flex; gap: 24px; }
+.footer-links a {
+  color: var(--text-faint);
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: #a78bfa; }
+
+/* =============================================
+   ANIMATIONS
+   ============================================= */
+@keyframes shimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fade-up  { animation: fadeUp  0.7s ease forwards; }
+.fade-in  { animation: fadeIn  0.5s ease forwards; }
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+  .navbar { padding: 14px 20px; }
+  .nav-links { gap: 16px; }
+  .hero h1 { font-size: 32px; }
+  .section { padding: 60px 20px; }
+  .hero { padding: 60px 20px; }
+  .footer { flex-direction: column; gap: 16px; text-align: center; }
+}
+```
+
+---
+
+## Now Run the Server!
+
+Go to your VS Code terminal and make sure `(venv)` is active, then run:
+```
+python app.py
+```
+
+You should see:
+```
+==================================================
+Admin account created!
+Email   : admin@portfolio.com
+Password: admin123
+==================================================
+* Running on http://127.0.0.1:5000

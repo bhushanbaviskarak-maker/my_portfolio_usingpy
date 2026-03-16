@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }} — Blog{% endblock %}
+
+{% block content %}
+
+<section style="max-width:760px; margin:0 auto; padding:60px 48px;">
+
+  <a href="{{ url_for('blog') }}"
+     style="font-size:13px; color:var(--text-muted); display:inline-block; margin-bottom:32px;">
+    ← Back to Blog
+  </a>
+
+  <div class="fade-up">
+    <div class="section-label" style="margin-bottom:12px;">Article</div>
+    <h1 style="font-size:36px; font-weight:600; color:var(--text-primary); line-height:1.3; margin-bottom:16px;">
+      {{ post.title }}
+    </h1>
+    <div style="font-size:13px; color:var(--text-faint); margin-bottom:40px;">
+      Published on {{ post.created_at.strftime('%d %B %Y') }}
+    </div>
+
+    <div style="font-size:15px; color:var(--text-muted); line-height:1.9;
+                border-top:1px solid var(--border-color); padding-top:32px;">
+      {{ post.content }}
+    </div>
+  </div>
+
+</section>
+
+{% endblock %}
+```
+
+---
+
+## Your Templates Folder Now Looks Like This
+```
+templates/
+├── base.html         ✅
+├── index.html        ✅
+├── about.html        ✅
+├── projects.html     ✅
+├── blog.html         ✅
+├── blog_post.html    ✅
+├── contact.html      ✅
+├── login.html        ✅
+├── register.html     ✅
+└── admin/
+    ├── dashboard.html    ✅
+    ├── projects.html     ✅
+    ├── add_project.html  ✅
+    └── messages.html     ✅

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Register — My Portfolio{% endblock %}
+
+{% block content %}
+
+<section style="min-height:80vh; display:flex; align-items:center; justify-content:center; padding:40px 20px;">
+
+  <div style="width:100%; max-width:420px;">
+
+    <!-- Header -->
+    <div style="text-align:center; margin-bottom:36px;">
+      <div class="section-label" style="margin-bottom:10px;">Join Us</div>
+      <h1 style="font-size:32px; font-weight:600; color:var(--text-primary);">
+        Create <span class="grad-text">Account</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:14px; margin-top:10px;">
+        Register to send messages and more
+      </p>
+    </div>
+
+    <!-- Card -->
+    <div class="grad-card">
+      <div class="grad-card-inner">
+
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="flash-{{ category }}" style="margin-bottom:20px;">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <!-- Register Form -->
+        <form method="POST" action="{{ url_for('register') }}">
+
+          <div class="form-group">
+            <label>Username</label>
+            <input
+              type="text"
+              name="username"
+              placeholder="yourname"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Email Address</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="you@example.com"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Create a strong password"
+              required
+            />
+          </div>
+
+          <button type="submit" class="grad-btn" style="width:100%; margin-top:8px;">
+            Create Account
+          </button>
+
+        </form>
+
+        <!-- Divider -->
+        <div style="text-align:center; margin:24px 0; color:var(--text-faint); font-size:13px;">
+          — or —
+        </div>
+
+        <!-- Login link -->
+        <div style="text-align:center; font-size:13px; color:var(--text-muted);">
+          Already have an account?
+          <a href="{{ url_for('login') }}" style="color:#a78bfa; margin-left:4px;">
+            Sign in
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

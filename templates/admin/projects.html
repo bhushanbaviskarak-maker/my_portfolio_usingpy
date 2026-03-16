@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Manage Projects — Admin{% endblock %}
+
+{% block content %}
+
+<div style="max-width:1200px; margin:0 auto; padding:40px 48px;">
+
+  <!-- Header -->
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:36px;">
+    <div>
+      <div class="section-label" style="margin-bottom:8px;">Admin Panel</div>
+      <h1 style="font-size:32px; font-weight:600;">
+        Manage <span class="grad-text">Projects</span>
+      </h1>
+    </div>
+    <a href="{{ url_for('admin_add_project') }}" class="grad-btn">
+      + Add New Project
+    </a>
+  </div>
+
+  <!-- Projects Table -->
+  {% if projects %}
+    <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:14px; overflow:hidden;">
+      <table style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr style="background:var(--bg-secondary); border-bottom:1px solid var(--border-color);">
+            <th style="padding:16px 20px; text-align:left; font-size:12px; color:var(--text-muted); font-weight:500;">#</th>
+            <th style="padding:16px 20px; text-align:left; font-size:12px; color:var(--text-muted); font-weight:500;">Title</th>
+            <th style="padding:16px 20px; text-align:left; font-size:12px; color:var(--text-muted); font-weight:500;">Tech Stack</th>
+            <th style="padding:16px 20px; text-align:left; font-size:12px; color:var(--text-muted); font-weight:500;">Date</th>
+            <th style="padding:16px 20px; text-align:left; font-size:12px; color:var(--text-muted); font-weight:500;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for project in projects %}
+          <tr style="border-bottom:1px solid var(--border-color);">
+            <td style="padding:16px 20px; font-size:13px; color:var(--text-faint);">{{ loop.index }}</td>
+            <td style="padding:16px 20px;">
+              <div style="font-size:14px; font-weight:500; color:var(--text-primary);">{{ project.title }}</div>
+              <div style="font-size:12px; color:var(--text-muted); margin-top:2px;">{{ project.description[:60] }}...</div>
+            </td>
+            <td style="padding:16px 20px;">
+              <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                {% for tech in project.tech_stack.split(',') %}
+                  <span class="tech-tag">{{ tech.strip() }}</span>
+                {% endfor %}
+              </div>
+            </td>
+            <td style="padding:16px 20px; font-size:12px; color:var(--text-muted);">
+              {{ project.created_at.strftime('%d %b %Y') }}
+            </td>
+            <td style="padding:16px 20px;">
+              <a href="{{ url_for('admin_delete_project', id=project.id) }}"
+                 onclick="return confirm('Delete this project?')"
+                 style="background:#ef444420; color:#f87171; border:1px solid #ef444444;
+                        font-size:12px; padding:6px 14px; border-radius:8px; cursor:pointer;">
+                Delete
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  {% else %}
+    <div style="text-align:center; padding:80px 20px; color:var(--text-muted);">
+      <div style="font-size:48px; margin-bottom:16px;">📂</div>
+      <div style="font-size:16px; color:var(--text-primary); margin-bottom:8px;">No projects yet</div>
+      <div style="font-size:13px; margin-bottom:24px;">Add your first project to display it on your portfolio</div>
+      <a href="{{ url_for('admin_add_project') }}" class="grad-btn">+ Add First Project</a>
+    </div>
+  {% endif %}
+
+</div>
+
+{% endblock %}
